@@ -1,0 +1,19 @@
+{
+   "compilerOptions": {
+    "rootDir": "app/src",
+    "outDir": "app/dist",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "target": "es6"
+   },
+   "exclude":[
+	"node_modules",
+	"css",
+	"images",
+	"partials"
+   ]
+}
