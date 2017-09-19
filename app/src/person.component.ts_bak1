@@ -1,0 +1,10 @@
+import {Component} from "@angular/core";
+
+@Component({template:'<div><h1>Person Details</h1><h2>Name : Jaggu</h2><h2>Age : 20</h2></div>',selector:'cool-app'})
+export class PersonComponent {
+	
+	constructor(){
+		console.log("Inside PersonComponent constructor!!!")
+	}
+
+}
