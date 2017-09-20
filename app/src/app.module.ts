@@ -3,16 +3,15 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 
-import {AppComponent} from "./app.component";
-import {CalComponent} from "./cal.component";
 import {CarComponent} from "./car.component";
-import {PersonComponent} from "./person.component";
+import {CarDetailComponent} from "./cardetail.component";
+import {InfoComponent} from "./info.component";
 
 
 @NgModule({
 	imports:[BrowserModule,FormsModule],
-	declarations:[AppComponent,CalComponent,CarComponent,PersonComponent],
-	bootstrap:[AppComponent]		
+	declarations:[InfoComponent,CarComponent,CarDetailComponent],
+	bootstrap:[InfoComponent]		
 })
 class AppModule {
 }

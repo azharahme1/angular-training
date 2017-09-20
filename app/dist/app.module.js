@@ -10,17 +10,16 @@ const core_1 = require("@angular/core");
 const platform_browser_1 = require("@angular/platform-browser");
 const forms_1 = require("@angular/forms");
 const platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
-const app_component_1 = require("./app.component");
-const cal_component_1 = require("./cal.component");
 const car_component_1 = require("./car.component");
-const person_component_1 = require("./person.component");
+const cardetail_component_1 = require("./cardetail.component");
+const info_component_1 = require("./info.component");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
-        declarations: [app_component_1.AppComponent, cal_component_1.CalComponent, car_component_1.CarComponent, person_component_1.PersonComponent],
-        bootstrap: [app_component_1.AppComponent]
+        declarations: [info_component_1.InfoComponent, car_component_1.CarComponent, cardetail_component_1.CarDetailComponent],
+        bootstrap: [info_component_1.InfoComponent]
     })
 ], AppModule);
 platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(AppModule);
