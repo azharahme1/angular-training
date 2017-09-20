@@ -21,12 +21,9 @@ CarComponent = __decorate([
         template: `<div>
 		<h1>Car Component</h1>
 		<h1>Name : {{name}}</h1>
-		<h1>Name : {{name}}</h1>
-		<h1>Name : {{name}}</h1>
-		<h1>Name : {{name}}</h1>
 		<input (click)='doChange()' type=button value='Change' />
 	</div>`,
-        selector: 'cool-app'
+        selector: 'car-detail'
     })
 ], CarComponent);
 exports.CarComponent = CarComponent;

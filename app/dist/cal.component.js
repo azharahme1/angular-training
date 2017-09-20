@@ -25,7 +25,8 @@ let CalComponent = class CalComponent {
 CalComponent = __decorate([
     core_1.Component({
         templateUrl: 'partials/cal.component.html',
-        selector: 'cool-app',
+        selector: 'calculator',
+        styleUrls: ['css/themes/cal.component.a11y.css']
     })
 ], CalComponent);
 exports.CalComponent = CalComponent;

@@ -3,24 +3,18 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 
-import {CoolComponent} from "./cool.component";
-import {PersonComponent} from "./person.component";
-import {CityComponent} from "./city.component";
-import {CarComponent} from "./car.component";
-import {EmployeeComponent} from "./employee.component";
+import {AppComponent} from "./app.component";
 import {CalComponent} from "./cal.component";
+import {CarComponent} from "./car.component";
+import {PersonComponent} from "./person.component";
+
 
 @NgModule({
 	imports:[BrowserModule,FormsModule],
-	declarations:[CalComponent,EmployeeComponent,CarComponent,CityComponent,PersonComponent,CoolComponent],
-	bootstrap:[CoolComponent]		
+	declarations:[AppComponent,CalComponent,CarComponent,PersonComponent],
+	bootstrap:[AppComponent]		
 })
 class AppModule {
-
-	constructor(){
-		console.log("Inside AppModule constructor!!!")
-	}
-
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)

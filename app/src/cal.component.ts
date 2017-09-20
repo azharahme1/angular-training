@@ -2,8 +2,8 @@ import {Component} from "@angular/core";
 
 @Component({
 	templateUrl:'partials/cal.component.html',
-	selector:'cool-app',
-	//styleUrls:['css/themes/cal.component.frog.css']
+	selector:'calculator',
+	styleUrls:['css/themes/cal.component.a11y.css']
 })
 export class CalComponent {
 	

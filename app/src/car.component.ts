@@ -4,12 +4,9 @@ import {Component} from "@angular/core";
 	template:`<div>
 		<h1>Car Component</h1>
 		<h1>Name : {{name}}</h1>
-		<h1>Name : {{name}}</h1>
-		<h1>Name : {{name}}</h1>
-		<h1>Name : {{name}}</h1>
 		<input (click)='doChange()' type=button value='Change' />
 	</div>`,
-	selector:'cool-app'
+	selector:'car-detail'
 })
 export class CarComponent {
 	
