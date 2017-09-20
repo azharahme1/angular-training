@@ -13,7 +13,7 @@ import {CalComponent} from "./cal.component";
 @NgModule({
 	imports:[BrowserModule,FormsModule],
 	declarations:[CalComponent,EmployeeComponent,CarComponent,CityComponent,PersonComponent,CoolComponent],
-	bootstrap:[CalComponent]		
+	bootstrap:[CoolComponent]		
 })
 class AppModule {
 

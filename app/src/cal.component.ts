@@ -1,14 +1,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-	template:`<div>
-		<h1>{{title}}</h1>
-		Enter Value : <input type=number [(ngModel)]='valOne' /><br/>
-		Enter Value : <input type=number [(ngModel)]='valTwo' /><br/>
-			      <input (click)='doSum()' type=button value='SUM' /><br/>
-		<h1>Result : {{result}}</h1>
-	</div>`,
-	selector:'cool-app'
+	templateUrl:'partials/cal.component.html',
+	selector:'cool-app',
+	//styleUrls:['css/themes/cal.component.frog.css']
 })
 export class CalComponent {
 	
@@ -20,6 +15,10 @@ export class CalComponent {
 	doSum(){
 		this.result = this.valOne + this.valTwo;			
 		//this.result = parseInt(this.valOne) + parseInt(this.valTwo);			
+	}
+
+	doDiff(){
+		this.result = this.valOne - this.valTwo;			
 	}
 
 }

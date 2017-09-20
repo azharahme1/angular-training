@@ -18,17 +18,14 @@ let CalComponent = class CalComponent {
         this.result = this.valOne + this.valTwo;
         //this.result = parseInt(this.valOne) + parseInt(this.valTwo);			
     }
+    doDiff() {
+        this.result = this.valOne - this.valTwo;
+    }
 };
 CalComponent = __decorate([
     core_1.Component({
-        template: `<div>
-		<h1>{{title}}</h1>
-		Enter Value : <input type=number [(ngModel)]='valOne' /><br/>
-		Enter Value : <input type=number [(ngModel)]='valTwo' /><br/>
-			      <input (click)='doSum()' type=button value='SUM' /><br/>
-		<h1>Result : {{result}}</h1>
-	</div>`,
-        selector: 'cool-app'
+        templateUrl: 'partials/cal.component.html',
+        selector: 'cool-app',
     })
 ], CalComponent);
 exports.CalComponent = CalComponent;

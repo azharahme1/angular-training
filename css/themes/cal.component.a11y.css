@@ -1,0 +1,38 @@
+.calculator{
+	border:20px solid black;
+	width:45%;
+	text-align:center;
+	box-shadow:20px 30px 80px black;
+}
+
+.calculator header, h1{
+	background-color:black;
+	color:white;
+	width:90%;
+	margin:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.calculator label {
+	display:inline-block;
+	width:90%;
+	text-align:left;
+	font-size:18px;
+}
+
+.calculator input[type=number] {
+	display:inline-block;
+	width:90%;
+	height:20px;
+}
+
+.calculator section input {
+	margin-top:10px;
+	display:inline-block;
+	width:45%;
+	height:30px;
+	background-color:black;
+	color:white;
+}
+	

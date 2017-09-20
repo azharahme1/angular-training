@@ -11,6 +11,7 @@ let CityComponent = class CityComponent {
     constructor() {
         this.name = "Banglore";
     }
+    //function declaration and implementation
     doVerify() {
         console.log(this.name);
     }
@@ -20,6 +21,7 @@ CityComponent = __decorate([
         template: `<div>
 		<h1>City Component</h1>
 		Enter City : <input type=text [(ngModel)]='name' />
+				<!-- You are invoking function based on some event -->
 			     <input (click)='doVerify()' type=button value='Verify' />
 	</div>`,
         selector: 'cool-app'

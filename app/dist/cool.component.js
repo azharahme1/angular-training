@@ -14,6 +14,15 @@ let CoolComponent = class CoolComponent {
     constructor() {
         console.log("Inside CoolComponent  constructor!!!");
     }
+    //10 more things
+    //implementation
+    ngOnInit() {
+        console.log("Inside CoolComponent  ngOnInit!!!");
+    }
+    //implementation
+    ngOnDestroy() {
+        console.log("Inside CoolComponent  ngOnDestroy!!!");
+    }
 };
 CoolComponent = __decorate([
     core_1.Component({ template: '<h1>Cool Looking Component</h1>', selector: 'cool-app' }),

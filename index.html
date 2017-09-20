@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- link rel="stylesheet" href="css/themes/cal.component.skyblue.css" /-->
+<script>
+
+	function changeTheme(themeName){
+			console.log("Theme changed to "+themeName);
+
+
+			/*var style0 = document.createElement('style');
+			var head = document.getElementsByTagName('head')[0];	
+			head.appendChild(style0);
+			var themePath = "\"css/themes/cal.component."+themeName+".css\"";
+			style0.innerHTML = "@import "+themePath;*/
+
+			/*var smallDoc = document.createDocumentFragment("<link rel='stylesheet' href='css/themes/cal.component.'+themeName+'.css' />");
+			console.log(smallDoc);
+			
+			var head = document.getElementsByTagName('head')[0];	
+			head.appendChild(smallDoc);
+			*/
+
+			var link = document.createElement('link');
+			var head = document.getElementsByTagName('head')[0];	
+			head.appendChild(link);
+			link.setAttribute('rel','stylesheet');
+			link.setAttribute('href','css/themes/cal.component.'+themeName+'.css');
+	}
+
+</script>
 <script src="./node_modules/zone.js/dist/zone.js">
 </script>
 <script src="./node_modules/reflect-metadata/Reflect.js">
@@ -14,6 +42,19 @@
 </script>
 </head>
 <body>
+	<nav style='width:30%;float:right'>
+		<ul type='none'>
+			<li style='display:inline'>
+				<input onclick="changeTheme('skyblue')" type=radio name='themeOptions' value='skyblue'>SkyBlue
+			</li>
+			<li style='display:inline'>
+				<input  onclick="changeTheme('frog')" type=radio name='themeOptions' value='frog'>Frog
+			</li>
+			<li style='display:inline'>
+				<input  onclick="changeTheme('a11y')" type=radio name='themeOptions' value='a11y'>Contrast
+			</li>
+		</ul>
+	</nav>
 	<cool-app>Loading......</cool-app>
 </body>
 </html>

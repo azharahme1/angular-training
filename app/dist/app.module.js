@@ -28,7 +28,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
         declarations: [cal_component_1.CalComponent, employee_component_1.EmployeeComponent, car_component_1.CarComponent, city_component_1.CityComponent, person_component_1.PersonComponent, cool_component_1.CoolComponent],
-        bootstrap: [cal_component_1.CalComponent]
+        bootstrap: [cool_component_1.CoolComponent]
     }),
     __metadata("design:paramtypes", [])
 ], AppModule);
