@@ -1,6 +1,8 @@
 <div class='calculator'>
 	<header>
 		<h1>{{title}}</h1>
+		<h3 style='color:yellow'>{{currentJoke}}</h3>
+		<h3 class='error'>{{errorMessage}}</h3>
 	</header>
 	<label for='val1'>Enter Number : </label>
 	<input type=number [(ngModel)]='valOne' id='val1' name='val1' /><br/>
@@ -9,6 +11,8 @@
 	<section>
 		<input (click)='doSum()' type=button value='SUM' />
 		<input (click)='doDiff()' type=button value='DIFF' />
+		<input (click)='doMultiply()' type=button value='Multiply' />
+		<input (click)='doDivide()' type=button value='Divide' />
 	</section>
 	<br/>
 	<h1>Result : {{result}}</h1>

@@ -1,6 +1,6 @@
 .calculator{
 	border:20px solid black;
-	width:100%;
+	width:90%;
 	text-align:center;
 	box-shadow:20px 30px 80px black;
 }
@@ -13,6 +13,16 @@
 	margin-top:10px;
 	margin-bottom:10px;
 }
+.calculator header .error{
+	background-color:white;
+	color:red;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
 
 .calculator label {
 	display:inline-block;

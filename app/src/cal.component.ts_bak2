@@ -1,0 +1,57 @@
+//A4 imports
+import {Component} from "@angular/core";
+
+//App imports
+import {CalService} from "./cal.service";
+
+
+@Component({
+	//providers:[CalService],
+	templateUrl:'partials/cal.component.html',
+	selector:'cool-app',
+	styleUrls:['css/themes/cal.component.a11y.css']
+})
+export class CalComponent {
+	
+	title:string = "Simple Math Calculator";
+	valOne:number = 10;
+	valTwo:number = 0;
+	result:number = 10;
+	calService:CalService = null;
+	errorMessage = "";
+
+	/*constructor(){
+		//Non IoC style of coding
+		this.calService = new CalService();
+	}*/
+
+	//DI is happeining here on abc argument
+	constructor(service:CalService){
+		//IoC style of coding
+		this.calService = service;
+	}
+	
+	doSum(){
+		this.result = this.calService.sum(this.valOne,this.valTwo);	
+		//this.result = this.valOne + this.valTwo;			
+	}
+
+	doDiff(){
+		this.result = this.calService.diff(this.valOne,this.valTwo);	
+		//this.result = this.valOne - this.valTwo;			
+	}
+
+	doMultiply(){
+		this.result = this.calService.multiply(this.valOne,this.valTwo);	
+	}
+
+	doDivide(){
+		try{
+			this.result = this.calService.divide(this.valOne,this.valTwo);	
+		}catch(ex){
+			console.log(ex);
+			this.errorMessage  = ex.message
+		}
+	}
+
+}

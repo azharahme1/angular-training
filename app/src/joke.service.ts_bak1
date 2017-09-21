@@ -1,0 +1,15 @@
+export class JokeService{
+		
+	const jokes:string[] = [
+		'Training will finish at 9 P.M.',
+		'Fridays are very boring.',
+		'Mondays are amazing.',
+		'Tusedays are always welcome.'
+	];
+
+	nextJoke():string{
+		let idx = Math.floor(Math.random()*this.jokes.length);
+		return this.jokes[idx];
+	}
+		
+}
