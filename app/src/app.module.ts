@@ -2,29 +2,43 @@ import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 
-//Component imports
+import {HomeComponent} from "./home.component";
+import {CricketComponent} from "./cricket.component";
+import {NewsComponent} from "./news.component";
+import {WeatherComponent} from "./weather.component";
+import {MoviesComponent} from "./movies.component";
 import {CarListComponent} from "./carlist.component";
 import {CarFormComponent} from "./carform.component";
 
-//Service imports
 import {CarService} from "./car.service";
 import {LogService} from "./log.service";
 
+import {AppComponent} from "./app.component";
+
+import {initializedRoutes} from "./app.routes";
+
 @NgModule({
-	imports:[
-		BrowserModule,
-		FormsModule
-	],
+	imports:[BrowserModule,FormsModule,initializedRoutes],
 	providers:[
 		LogService,
 		{provide:'ICarService',useClass:CarService}
 	],
 	declarations:[
+		AppComponent,
+		HomeComponent,
+		CricketComponent,
+		NewsComponent,
+		WeatherComponent,
+		MoviesComponent,
 		CarListComponent,
 		CarFormComponent
 	],
-	bootstrap:[CarListComponent]		
+	bootstrap:[AppComponent]
 })
 export class AppModule {
 }
+
+
+
+
 

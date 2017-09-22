@@ -1,5 +1,8 @@
 import {Component,OnInit,Inject,Input,Output,EventEmitter} from "@angular/core";
 
+import {ActivatedRoute,Router} from "@angular/router";
+
+
 import {Car} from "./car";
 import {CarService} from "./car.service";
 import {LogService} from "./log.service";
@@ -12,35 +15,36 @@ import {LogService} from "./log.service";
 export class CarFormComponent implements OnInit {
 
 	title:string = 'Car Entry Form';
-
-	@Input()
-	editMode:boolean;
-
-	@Input()
 	car:Car;
-
-	@Output()
-	carUpdated:EventEmitter = new EventEmitter();
-
-	@Output()
-	carAdded:EventEmitter = new EventEmitter();
 	
-	constructor(private logger:LogService,@Inject('ICarService') private carService:ICarService){
+	constructor(private router:Router,private activatedRoute:ActivatedRoute,private logger:LogService,@Inject('ICarService') private carService:ICarService){
 	}
 
 	ngOnInit(){
 		this.editMode = false;
 		this.car = new Car();
+
+		var self = this;
+		this.activatedRoute.params.subscribe(function(prms){
+			var vin = parseInt(prms['vin']);
+			console.log("VIN "+vin);
+			self.car = self.carService.findCar(vin);
+			self.editMode = true;
+		});
+
 	}
 
 	doAdd(){
 		this.logger.info("Inside CarFormComponent doAdd()");
-		this.carAdded.emit({car:JSON.parse(JSON.stringify(this.car))});
+		this.carService.addCar(this.car);
+		this.router.navigate(['/carlist']);
 	}
 
 	doUpdate(){
 		this.logger.info("Inside CarFormComponent doUpdate()");
-		this.carUpdated.emit({updatedCar:JSON.parse(JSON.stringify(this.car)),time:new Date()});
+		this.carService.updateCar(this.car);
+		this.router.navigate(['/carlist']);
+
 	}
 
 }

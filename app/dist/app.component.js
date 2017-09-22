@@ -9,46 +9,44 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 let AppComponent = class AppComponent {
     constructor() {
-        this.title = "Coolest App Ever";
+        this.title = 'Capita India Private Ltd';
     }
 };
 AppComponent = __decorate([
     core_1.Component({
-        template: `<div class='container'>
-			<h1>{{title}}</h1>
-			<calculator></calculator>
-			<person-detail></person-detail>	
-			<p style='clear:both'></p>	
-			<hr style='height:10px;background-color:blue;' />	
-			<car-detail></car-detail>
-		<div>`,
-        selector: 'cool-app',
+        selector: 'app',
+        template: `<h1> {{title}} </h1>
+  			<nav>
+    			<ul>
+  					<li><a routerLink='news'>News</a></li>
+  					<li><a routerLink='weather'>Weather</a></li>
+  					<li><a routerLink='cricket'>Cricket</a></li>
+  					<li><a routerLink=''>Calculator</a></li>
+  					<li><a routerLink='movies/100'>Movies 1</a></li>
+            <li><a routerLink='movies/200'>Movies 2</a></li>
+            <li><a routerLink='movies/300'>Movies 3</a></li>
+            <li><a routerLink='carlist'>Car List</a></li>
+  					<li><a routerLink=''>Products</a></li>
+  					<li><a routerLink=''>Partners</a></li>
+  				</ul>
+  			</nav>
+  			<router-outlet></router-outlet>
+    		`,
         styles: [`
+		nav{
+			background-color:black;
+		}		
 
-		.container{
-			width:90%;
-			margin:auto;
+		li {
+			display:inline;
 		}
-		.container h1{
-			background-color:rgb(0,100,255);
+		
+		li a{
 			color:white;
-			width:60%;
-			margin:auto;
-			text-align:center;
-			margin-top:5px;
-			margin-bottom:5px;
+			font-size:20px;
+			text-decoration:none;
+			margin-right:20px;
 		}
-
-		.container calculator{
-			float:left;
-			width:40%;
-		}
-
-		.container person-detail{
-			float:right;
-			width:40%;
-		}
-
 	`]
     })
 ], AppComponent);

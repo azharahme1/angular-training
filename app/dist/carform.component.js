@@ -13,53 +13,47 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
 const car_1 = require("./car");
 const log_service_1 = require("./log.service");
 let CarFormComponent = class CarFormComponent {
-    constructor(logger, carService) {
+    constructor(router, activatedRoute, logger, carService) {
+        this.router = router;
+        this.activatedRoute = activatedRoute;
         this.logger = logger;
         this.carService = carService;
         this.title = 'Car Entry Form';
-        this.carUpdated = new core_1.EventEmitter();
-        this.carAdded = new core_1.EventEmitter();
     }
     ngOnInit() {
         this.editMode = false;
         this.car = new car_1.Car();
+        var self = this;
+        this.activatedRoute.params.subscribe(function (prms) {
+            var vin = parseInt(prms['vin']);
+            console.log("VIN " + vin);
+            self.car = self.carService.findCar(vin);
+            self.editMode = true;
+        });
     }
     doAdd() {
         this.logger.info("Inside CarFormComponent doAdd()");
-        this.carAdded.emit({ car: JSON.parse(JSON.stringify(this.car)) });
+        this.carService.addCar(this.car);
+        this.router.navigate(['/carlist']);
     }
     doUpdate() {
         this.logger.info("Inside CarFormComponent doUpdate()");
-        this.carUpdated.emit({ updatedCar: JSON.parse(JSON.stringify(this.car)), time: new Date() });
+        this.carService.updateCar(this.car);
+        this.router.navigate(['/carlist']);
     }
 };
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], CarFormComponent.prototype, "editMode", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", car_1.Car)
-], CarFormComponent.prototype, "car", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], CarFormComponent.prototype, "carUpdated", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], CarFormComponent.prototype, "carAdded", void 0);
 CarFormComponent = __decorate([
     core_1.Component({
         templateUrl: 'partials/carform.component.html',
         styleUrls: ['css/carform.component.css'],
         selector: 'car-form'
     }),
-    __param(1, core_1.Inject('ICarService')),
-    __metadata("design:paramtypes", [log_service_1.LogService, Object])
+    __param(3, core_1.Inject('ICarService')),
+    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, log_service_1.LogService, Object])
 ], CarFormComponent);
 exports.CarFormComponent = CarFormComponent;
 //# sourceMappingURL=carform.component.js.map

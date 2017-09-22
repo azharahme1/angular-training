@@ -20,6 +20,14 @@ class CarService {
         car.vin = this.cars.length + 1000;
         this.cars.push(car);
     }
+    findCar(vin) {
+        for (var idx = 0; idx < this.cars.length; idx++) {
+            var car = this.cars[idx];
+            if (car.vin === vin) {
+                return car;
+            }
+        }
+    }
     deleteCar(vin) {
         for (var idx = 0; idx < this.cars.length; idx++) {
             var car = this.cars[idx];

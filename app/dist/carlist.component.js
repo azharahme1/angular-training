@@ -23,35 +23,21 @@ let CarListComponent = class CarListComponent {
         this.imagePath = properties_1.imageUrl;
         this.editImage = properties_1.editIcon;
         this.deleteImage = properties_1.deleteIcon;
-        this.edit = false;
     }
     ngOnInit() {
         this.cars = this.carService.readAll();
     }
     ngOnDestroy() {
     }
-    doEdit(car) {
-        this.edit = true;
-        this.selectedCar = JSON.parse(JSON.stringify(car));
-        console.log(`Car ${car.name} open for edit mode!!!!`);
-    }
     doDelete(vin) {
         this.carService.deleteCar(vin);
         this.logger.info(`Car with ${vin} deleted!!!!`);
-    }
-    doUpdate(evt) {
-        this.logger.info("Inside CarListComponent doUpdate()");
-        this.carService.updateCar(evt.updatedCar);
-    }
-    doAdd(evt) {
-        this.logger.info("Inside CarListComponent doAdd()");
-        this.carService.addCar(evt.car);
     }
 };
 CarListComponent = __decorate([
     core_1.Component({
         templateUrl: 'partials/carlist.component.html',
-        selector: 'automobile-app',
+        selector: 'automobile',
         styleUrls: ['css/carlist.component.css']
     }),
     __param(1, core_1.Inject('ICarService')),

@@ -8,7 +8,7 @@ import {LogService} from "./log.service";
 
 @Component({
 	templateUrl:'partials/carlist.component.html',
-	selector:'automobile-app',
+	selector:'automobile',
 	styleUrls:['css/carlist.component.css']
 })
 export class CarListComponent implements OnInit,OnDestroy {
@@ -18,8 +18,6 @@ export class CarListComponent implements OnInit,OnDestroy {
 	imagePath:string = imageUrl;
 	editImage:string = editIcon;
 	deleteImage:string = deleteIcon;
-	selectedCar:Car;
-	edit:boolean = false;
 	
 	constructor(private logger:LogService,@Inject('ICarService') private carService:ICarService){
 	}
@@ -31,25 +29,10 @@ export class CarListComponent implements OnInit,OnDestroy {
 	ngOnDestroy(){
 	}
 
-	doEdit(car:Car){
-		this.edit = true;
-		this.selectedCar = JSON.parse(JSON.stringify(car));
-		console.log(`Car ${car.name} open for edit mode!!!!`);
-	}
-
 	doDelete(vin:number){
 		this.carService.deleteCar(vin);
 		this.logger.info(`Car with ${vin} deleted!!!!`);
 	}	
 
-	doUpdate(evt){
-		this.logger.info("Inside CarListComponent doUpdate()");
-		this.carService.updateCar(evt.updatedCar);
-	}
-
-	doAdd(evt){
-		this.logger.info("Inside CarListComponent doAdd()");
-		this.carService.addCar(evt.car);
-	}
 	
 }

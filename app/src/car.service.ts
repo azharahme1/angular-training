@@ -26,6 +26,15 @@ export class CarService implements ICarService{
 		this.cars.push(car);	
 	}
 
+	findCar(vin:number):Car{
+		for(var idx=0;idx<this.cars.length;idx++){
+			var car = this.cars[idx];
+			if(car.vin === vin){
+				return car;
+			}	
+		}
+	}
+
 	deleteCar(vin:number){
 		for(var idx=0;idx<this.cars.length;idx++){
 			var car = this.cars[idx];
