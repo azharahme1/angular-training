@@ -1,0 +1,15 @@
+<h1>{{title}}</h1>
+<form name='carForm'>
+	<label for='c_vin'>Enter Vin :</label> 
+	<input readonly type=number [(ngModel)]='car.vin' name='c_vin' id='c_vin' /><br/>
+	<label for='c_name'>Enter Model :</label> 
+	<input type=text [(ngModel)]='car.name' name='c_name' id='c_name'  /><br/>
+	<label for='c_make'>Enter Make :</label> 
+	<input type=text [(ngModel)]='car.make' name='c_make' id='c_make'  /><br/>
+	<label for='c_price'>Enter Price :</label> 
+	<input type=text [(ngModel)]='car.price' name='c_price' id='c_price' /><br/>
+	<label for='c_color'>Enter Color :</label> 
+	<input type=text [(ngModel)]='car.color' name='c_color' id='c_color'  /><br/>
+	<input [hidden]='editMode' (click)='doAdd();' type=button value='Add Car' /><br/>
+	<input [hidden]='!editMode' (click)='doUpdate();' type=button value='Update Car' /><br/>
+</form>

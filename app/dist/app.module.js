@@ -9,19 +9,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const platform_browser_1 = require("@angular/platform-browser");
 const forms_1 = require("@angular/forms");
-const platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
 //Component imports
-const car_component_1 = require("./car.component");
-const cardetail_component_1 = require("./cardetail.component");
-const info_component_1 = require("./info.component");
-const theme_component_1 = require("./theme.component");
-const cal_component_1 = require("./cal.component");
+const carlist_component_1 = require("./carlist.component");
+const carform_component_1 = require("./carform.component");
 //Service imports
-const cal_service_1 = require("./cal.service");
-const math_service_1 = require("./math.service");
-const joke_service_1 = require("./joke.service");
-const data_service_1 = require("./data.service");
-const calculator_service_1 = require("./calculator.service");
+const car_service_1 = require("./car.service");
+const log_service_1 = require("./log.service");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -31,25 +24,15 @@ AppModule = __decorate([
             forms_1.FormsModule
         ],
         providers: [
-            data_service_1.DataService,
-            joke_service_1.JokeService,
-            { provide: 'calculator', useClass: calculator_service_1.CalculatorService },
-            { provide: 'simpleCalculator', useClass: math_service_1.MathService },
-            { provide: 'easyCalculator', useClass: cal_service_1.CalService }
+            log_service_1.LogService,
+            { provide: 'ICarService', useClass: car_service_1.CarService }
         ],
-        //providers:[{provide:'ICalService',useClass:MathService}],
-        //providers:[{provide:'ICalService',useClass:CalService}],
-        //providers:[CalService],
         declarations: [
-            cal_component_1.CalComponent,
-            theme_component_1.ThemeComponent,
-            info_component_1.InfoComponent,
-            car_component_1.CarComponent,
-            cardetail_component_1.CarDetailComponent
+            carlist_component_1.CarListComponent,
+            carform_component_1.CarFormComponent
         ],
-        bootstrap: [cal_component_1.CalComponent]
+        bootstrap: [carlist_component_1.CarListComponent]
     })
 ], AppModule);
-core_1.enableProdMode();
-platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(AppModule);
+exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

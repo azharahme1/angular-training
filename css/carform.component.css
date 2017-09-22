@@ -1,0 +1,29 @@
+label{
+	width: 80%;
+}
+
+input {
+	height: 25px;
+	width:80%;
+}
+
+input[type=button] {
+	margin-top:10px;
+	margin-bottom:10px;
+	height: 35px;
+	width:80%;
+	color:white;
+	background-color: blue;
+	font-size: 22px;
+}
+
+h1{
+	background-color:blue;
+	color:white;
+	margin:auto;
+	margin-top:20px;
+	width:80%;
+	border-radius:40px;
+}
+
+

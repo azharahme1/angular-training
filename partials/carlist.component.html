@@ -1,0 +1,31 @@
+<div class='container'>
+	<div class='carlist'>
+		<h1>{{title}}</h1>
+		<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Color</th>
+				<th>Picture</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let car of cars">
+				<td>{{car.make}} {{car.name}}</td>
+				<td>{{car.price}}</td>
+				<td>{{car.color}}</td>
+				<td><img width=30 height=30 [src]='imagePath+car.logo' /></td>
+				<td>
+					<img (click)='doEdit(car);' [src]='imagePath+editImage' />
+					<img (click)='doDelete(car.vin);' [src]='imagePath+deleteImage' />
+				</td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+	<div class='carform'>
+		<car-form [editMode]='edit' [car]='selectedCar' (carAdded)='doAdd($event)' (carUpdated)='doUpdate($event);' ></car-form>
+	</div>
+</div>

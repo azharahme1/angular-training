@@ -1,24 +1,14 @@
-import {NgModule,enableProdMode} from "@angular/core";
+import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
-import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
-
 
 //Component imports
-import {CarComponent} from "./car.component";
-import {CarDetailComponent} from "./cardetail.component";
-import {InfoComponent} from "./info.component";
-import {ThemeComponent} from "./theme.component";
-import {CalComponent} from "./cal.component";
+import {CarListComponent} from "./carlist.component";
+import {CarFormComponent} from "./carform.component";
 
 //Service imports
-import {CalService} from "./cal.service";
-import {MathService} from "./math.service";
-import {ICalService} from "./cal.interface";
-import {JokeService} from "./joke.service";
-import {DataService} from "./data.service";
-import {CalculatorService} from "./calculator.service";
-
+import {CarService} from "./car.service";
+import {LogService} from "./log.service";
 
 @NgModule({
 	imports:[
@@ -26,26 +16,15 @@ import {CalculatorService} from "./calculator.service";
 		FormsModule
 	],
 	providers:[
-		DataService,
-		JokeService,
-		{provide:'calculator',useClass:CalculatorService},
-		{provide:'simpleCalculator',useClass:MathService},
-		{provide:'easyCalculator',useClass:CalService}
+		LogService,
+		{provide:'ICarService',useClass:CarService}
 	],
-	//providers:[{provide:'ICalService',useClass:MathService}],
-	//providers:[{provide:'ICalService',useClass:CalService}],
-	//providers:[CalService],
 	declarations:[
-		CalComponent,
-		ThemeComponent,
-		InfoComponent,
-		CarComponent,
-		CarDetailComponent
+		CarListComponent,
+		CarFormComponent
 	],
-	bootstrap:[CalComponent]		
+	bootstrap:[CarListComponent]		
 })
-class AppModule {
+export class AppModule {
 }
 
-enableProdMode()
-platformBrowserDynamic().bootstrapModule(AppModule)
