@@ -1,38 +1,75 @@
-import {Component,Inject,OnInit,OnDestroy} from "@angular/core";
-
-import {Car} from "./car";
-import {ICarService} from "./car.service";
-import {imageUrl,editIcon,deleteIcon} from "./properties";
-import {LogService} from "./log.service";
+import { Component } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
-	templateUrl:'partials/carlist.component.html',
-	selector:'automobile',
-	styleUrls:['css/carlist.component.css']
+  selector: 'app',
+  template: `<h1> {{title}} </h1>
+  			 <button (click)='loadCars();'>Load Cars</button>
+         <div class='carlist'>
+    <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Color</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <td>{{car.make}} {{car.name}}</td>
+        <td>{{car.price}}</td>
+        <td>{{car.color}}</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>`,
+	styles:[`
+	`]
 })
-export class CarListComponent implements OnInit,OnDestroy {
-	
-	title:string = "Cool Automobile App";
-	cars:Car[];
-	imagePath:string = imageUrl;
-	editImage:string = editIcon;
-	deleteImage:string = deleteIcon;
-	
-	constructor(private logger:LogService,@Inject('ICarService') private carService:ICarService){
-	}
-	
-	ngOnInit(){
-		this.cars = this.carService.readAll();
-	}
+export class CarListComponent implements OnInit{
+  	title:string = 'Capita India Private Ltd';
+  	cars:Array<any>;
 
-	ngOnDestroy(){
-	}
+  	constructor(private http:Http){}
 
-	doDelete(vin:number){
-		this.carService.deleteCar(vin);
-		this.logger.info(`Car with ${vin} deleted!!!!`);
-	}	
+    /*ngOnInit(){
 
-	
+      var self = this;
+      var obs:Observable<Response> = this.http.get('cars.json');
+      obs.subscribe(function(res:Response){
+          self.cars = res.json();
+          console.log("All cars loaded from server.......");
+       });
+
+    }*/
+
+  	loadCars(){
+  	 
+           
+
+      this.http.get('cars.json')
+        .subscribe((res) => {
+            this.cars = res.json();
+            console.log("All cars loaded from server.......");
+        });
+
+      /*this.http.get('cars.json').subscribe((res:Response) => {
+          this.cars = res.json();
+          console.log("All cars loaded from server.......");
+      });*/
+
+      /*var obs:Observable<Response> = this.http.get('cars.json');
+      obs.subscribe((res:Response) => {
+          this.cars = res.json();
+          console.log("All cars loaded from server.......");
+      });*/
+
+      /*obs.subscribe(function(res:Response){
+          self.cars = res.json();
+          console.log("All cars loaded from server.......");
+       });*/
+
+  	}
 }

@@ -8,40 +8,72 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
-const properties_1 = require("./properties");
-const log_service_1 = require("./log.service");
+const http_1 = require("@angular/http");
 let CarListComponent = class CarListComponent {
-    constructor(logger, carService) {
-        this.logger = logger;
-        this.carService = carService;
-        this.title = "Cool Automobile App";
-        this.imagePath = properties_1.imageUrl;
-        this.editImage = properties_1.editIcon;
-        this.deleteImage = properties_1.deleteIcon;
+    constructor(http) {
+        this.http = http;
+        this.title = 'Capita India Private Ltd';
     }
-    ngOnInit() {
-        this.cars = this.carService.readAll();
-    }
-    ngOnDestroy() {
-    }
-    doDelete(vin) {
-        this.carService.deleteCar(vin);
-        this.logger.info(`Car with ${vin} deleted!!!!`);
+    /*ngOnInit(){
+
+      var self = this;
+      var obs:Observable<Response> = this.http.get('cars.json');
+      obs.subscribe(function(res:Response){
+          self.cars = res.json();
+          console.log("All cars loaded from server.......");
+       });
+
+    }*/
+    loadCars() {
+        this.http.get('cars.json')
+            .subscribe((res) => {
+            this.cars = res.json();
+            console.log("All cars loaded from server.......");
+        });
+        /*this.http.get('cars.json').subscribe((res:Response) => {
+            this.cars = res.json();
+            console.log("All cars loaded from server.......");
+        });*/
+        /*var obs:Observable<Response> = this.http.get('cars.json');
+        obs.subscribe((res:Response) => {
+            this.cars = res.json();
+            console.log("All cars loaded from server.......");
+        });*/
+        /*obs.subscribe(function(res:Response){
+            self.cars = res.json();
+            console.log("All cars loaded from server.......");
+         });*/
     }
 };
 CarListComponent = __decorate([
     core_1.Component({
-        templateUrl: 'partials/carlist.component.html',
-        selector: 'automobile',
-        styleUrls: ['css/carlist.component.css']
+        selector: 'app',
+        template: `<h1> {{title}} </h1>
+  			 <button (click)='loadCars();'>Load Cars</button>
+         <div class='carlist'>
+    <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Color</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <td>{{car.make}} {{car.name}}</td>
+        <td>{{car.price}}</td>
+        <td>{{car.color}}</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>`,
+        styles: [`
+	`]
     }),
-    __param(1, core_1.Inject('ICarService')),
-    __metadata("design:paramtypes", [log_service_1.LogService, Object])
+    __metadata("design:paramtypes", [http_1.Http])
 ], CarListComponent);
 exports.CarListComponent = CarListComponent;
 //# sourceMappingURL=carlist.component.js.map
